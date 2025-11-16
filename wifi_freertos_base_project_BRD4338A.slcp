@@ -1,0 +1,75 @@
+# Silicon Labs Project Configuration Tools: slcp, v0, Component selection file.
+project_name: wifi_freertos_base_project_BRD4338A
+label: wifi_freertos_base_project_BRD4338A
+description: |
+  Enable power save deep sleep profile with SiWx91x
+category: Example|Wi-Fi
+filter:
+- name: Project Difficulty
+  value: [Beginner]
+- name: Wireless Technology
+  value: [Wi-Fi]
+package: wifi
+quality: production
+readme:
+- {path: readme.md}
+- {path: readme.md}
+source:
+- {path: app.c}
+include:
+- path: .
+  file_list:
+  - {path: app.h}
+sdk: {vendor: null, id: simplicity_sdk, version: 2025.6.2}
+toolchain_settings:
+- {value: -Wall -Werror, option: gcc_compiler_option}
+component:
+- {from: wiseconnect3_sdk, id: SIWG917M111MGTBA}
+- {from: wiseconnect3_sdk, id: basic_network_config_manager}
+- {from: wiseconnect3_sdk, id: brd4338a}
+- {from: wiseconnect3_sdk, id: calendar_ulp_component}
+- {from: wiseconnect3_sdk, id: network_manager}
+- {from: wiseconnect3_sdk, id: power_manager_config}
+- {from: wiseconnect3_sdk, id: si91x_memory_default_config}
+- {from: wiseconnect3_sdk, id: sl_power_manager}
+- {from: wiseconnect3_sdk, id: sl_si91x_internal_stack}
+- {from: wiseconnect3_sdk, id: sl_si91x_mem_pool_buffers_with_quota}
+- {from: wiseconnect3_sdk, id: syscalls}
+- {from: wiseconnect3_sdk, id: wakeup_source_config}
+- {from: wiseconnect3_sdk, id: wifi}
+- {from: wiseconnect3_sdk, id: wifi_resources}
+- {from: wiseconnect3_sdk, id: wiseconnect3_common}
+- {id: brd4002a}
+- {id: freertos}
+- {id: freertos_heap_4}
+- {id: sl_main}
+other_file:
+- {path: resources/readme/setup_soc_ncp.png}
+- {path: resources/readme/application_prints_soc.png}
+- {path: resources/readme/application_prints_ncp.png}
+- {path: resources/readme/wakeup_config_1.png}
+- {path: resources/readme/wakeup_config_2.png}
+- {path: resources/readme/stm32_setup.png}
+- {path: resources/readme/energy_profiler_step_1.png}
+- {path: resources/readme/energy_profiler_step_2.png}
+- {path: resources/readme/energy_profiler_step_3.png}
+- {path: resources/readme/power_meter_avg_current_consumption.png}
+- {path: resources/readme/set_ram_level_1.png}
+- {path: resources/readme/set_ram_level_2.png}
+define:
+- {name: SL_SI91X_PRINT_DBG_LOG}
+requires:
+- {name: device_needs_ram_execution}
+configuration:
+- {name: SL_BOARD_ENABLE_VCOM, value: '1'}
+- {name: SL_ENABLE_CALENDAR_WAKEUP_SOURCE, value: '1'}
+- {name: ENABLE_ALARM, value: '1'}
+- {name: ALARM_TIME_MSEC, value: '30000'}
+ui_hints:
+  highlight:
+  - {path: readme.md, focus: true}
+sdk_extension:
+- {vendor: null, id: wiseconnect3_sdk, version: 3.5.2}
+post_build:
+- {path: wifi_freertos_base_project_BRD4338A.slpb}
+
