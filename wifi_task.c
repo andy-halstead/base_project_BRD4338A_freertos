@@ -145,7 +145,7 @@ static void wifi_task(void *arg)
 	}
 
   // Place NWP in sleep without RAM reterntion
-  sl_wifi_performance_profile_v2_t performance_profile = { .profile = DEEP_SLEEP_WITHOUT_RAM_RETENTION };
+  sl_wifi_performance_profile_v2_t performance_profile = { .profile = DEEP_SLEEP_WITH_RAM_RETENTION };
   status = sl_wifi_set_performance_profile_v2(&performance_profile);
   if (status != SL_STATUS_OK) {
     printf("Power save profile with deep sleep Failed, Error Code : 0x%lX\r\n", status);
