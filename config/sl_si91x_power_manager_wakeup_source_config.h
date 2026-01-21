@@ -54,7 +54,7 @@ extern "C" {
 // </e>
 
 // <e>GPIO Wakeup
-#define SL_ENABLE_GPIO_WAKEUP_SOURCE 0
+#define SL_ENABLE_GPIO_WAKEUP_SOURCE 1
 
 // <e ENABLE_NPSS_GPIO_0> Enable NPSS GPIO 0
 // <i> Default: 0
@@ -80,7 +80,7 @@ extern "C" {
 
 // <e ENABLE_NPSS_GPIO_2> Enable NPSS GPIO 2
 // <i> Default: 0
-#define ENABLE_NPSS_GPIO_2 0
+#define ENABLE_NPSS_GPIO_2 1
 
 // <o NPSS_GPIO_2_POLARITY> Select NPSS GPIO_2 Polarity
 //   <POLARITY_LOW=> Polarity Low

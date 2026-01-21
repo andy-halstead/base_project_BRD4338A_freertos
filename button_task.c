@@ -58,7 +58,7 @@ void button_task_init(void)
  ******************************************************************************/
 static void button_task(void *arg)
 {
-    printf("\r\nButton Task Started\r\n");
+    printf("Button Task Started\r\n");
 
 	(void)&arg;
     uint32_t received_flags;
@@ -69,12 +69,20 @@ static void button_task(void *arg)
         received_flags = osEventFlagsWait(button_event_id, BUTTON_EVENT_ALL , osFlagsWaitAny, osWaitForever);
         
         if( received_flags & BUTTON_EVENT_BUTTON0_PRESSED ) {
+            osEventFlagsClear(button_event_id, BUTTON_EVENT_BUTTON0_PRESSED);
             printf("BUTTON_EVENT_BUTTON0_PRESSED\r\n");
-
         }
+
+        if( received_flags & BUTTON_EVENT_BUTTON0_WAKEUP ) {
+            osEventFlagsClear(button_event_id, BUTTON_EVENT_BUTTON0_WAKEUP);
+            printf("BUTTON_EVENT_BUTTON0_WAKEUP\r\n");
+        }
+
         if( received_flags & BUTTON_EVENT_BUTTON1_PRESSED ) {
+            osEventFlagsClear(button_event_id, BUTTON_EVENT_BUTTON1_PRESSED);
             printf("BUTTON_EVENT_BUTTON1_PRESSED\r\n");
         }
+
 	}
 }
 
@@ -94,6 +102,14 @@ void sl_si91x_button_isr(uint8_t pin, int8_t state)
         if (state == BUTTON_PRESSED) {
             osEventFlagsSet(button_event_id, BUTTON_EVENT_BUTTON1_PRESSED);
         }
+    }
+}
+
+void gpio_uulp_pin_interrupt_callback(uint32_t pin_intr)
+{
+    if (pin_intr == 2) 
+    {        
+        osEventFlagsSet(button_event_id, BUTTON_EVENT_BUTTON0_WAKEUP);
     }
 }
 

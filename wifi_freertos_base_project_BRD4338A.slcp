@@ -28,6 +28,7 @@ component:
 - {from: wiseconnect3_sdk, id: basic_network_config_manager}
 - {from: wiseconnect3_sdk, id: brd4338a}
 - {from: wiseconnect3_sdk, id: calendar_ulp_component}
+- {from: wiseconnect3_sdk, id: gpio_npss_component}
 - {from: wiseconnect3_sdk, id: network_manager}
 - {from: wiseconnect3_sdk, id: power_manager_config}
 - {from: wiseconnect3_sdk, id: si91x_memory_default_config}

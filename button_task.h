@@ -9,12 +9,13 @@
 #define BUTTON_TASK_H_
 
 #define BUTTON_EVENT_ALL                  ( BUTTON_EVENT_BUTTON0_PRESSED \
+                                          | BUTTON_EVENT_BUTTON0_WAKEUP  \
                                           | BUTTON_EVENT_BUTTON1_PRESSED )
 
                                           
 #define BUTTON_EVENT_BUTTON0_PRESSED     0x1
-#define BUTTON_EVENT_BUTTON1_PRESSED     0x2
-
+#define BUTTON_EVENT_BUTTON0_WAKEUP      0x2
+#define BUTTON_EVENT_BUTTON1_PRESSED     0x4
 
 void button_task_init(void);
 
